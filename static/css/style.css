@@ -848,7 +848,7 @@ textarea#comment.massage-bt::placeholder {
   width: 100%;
   float: left;
   height: auto;
-  background-image: url(../images/footer-bg.png);
+  background-image: url(../images/banner-bg.png);
   background-size: 100% 100%;
   padding: 90px 0px 0px 0px;
 }

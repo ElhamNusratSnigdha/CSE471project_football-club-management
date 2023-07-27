@@ -34,6 +34,11 @@
     <link rel="stylesheet" href="static/css/jquery.mCustomScrollbar.min.css" />
     <!-- Tweaks for older IEs-->
     <link rel="stylesheet" href="/static/css/font-awesome.css" />
+    <style>
+        form{
+            text-align: center;
+        }
+    </style>
   </head>
   <body>
     <div class="header_section">
@@ -62,7 +67,7 @@
                 <a class="nav-link" href="/team">Team</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="/players">Players</a>
+                <a class="nav-link" href="/team">Players</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="/matches">Match Schedule</a>
@@ -91,180 +96,17 @@
           </div>
         </nav>
       </div>
-      <!-- banner section start -->
-      <div class="banner_section layout_padding">
-        <div class="container">
-          <div id="banner_slider" class="carousel slide" data-ride="carousel">
-            <div class="carousel-inner">
-              <div class="carousel-item active">
-                <div class="row">
-                  <div class="col-md-6">
-                    <div class="banner_img">
-                      <img src="static/images/banner-img.png" />
-                    </div>
-                  </div>
-                  <div class="col-md-6">
-                    <div class="banner_taital_main">
-                      <h1 class="banner_taital">FC Barcelona</h1>
-                      <h5 class="tasty_text">Més que un club</h5>
-                      <p class="banner_text">More than a club</p>
-                      <div class="btn_main">
-                        <div class="about_bt">
-                          <a href="/about">About Us</a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="carousel-item">
-                <div class="row">
-                  <div class="col-md-6">
-                    <div class="banner_img">
-                      <img src="static/images/banner-img2.png" />
-                    </div>
-                  </div>
-                  <div class="col-md-6">
-                    <div class="banner_taital_main">
-                      <h1 class="banner_taital">Men's Team</h1>
-                      <h5 class="tasty_text">Squad</h5>
-                      <p class="banner_text">
-                        Elite players from around the globe united under one
-                        club
-                      </p>
-                      <div class="btn_main">
-                        <div class="about_bt"><a href="/team">Team</a></div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <a
-              class="carousel-control-prev"
-              href="#banner_slider"
-              role="button"
-              data-slide="prev"
-            >
-              <i class="fa fa-arrow-left"></i>
-            </a>
-            <a
-              class="carousel-control-next"
-              href="#banner_slider"
-              role="button"
-              data-slide="next"
-            >
-              <i class="fa fa-arrow-right"></i>
-            </a>
-          </div>
-        </div>
-      </div>
+
+      <form action="/form_login" method="post">
+        <h2 style="color: lightcoral;">Username:<br>
+        <input type="text" name='username'><br>Password:<br>
+        <input  name='password'><br>
+        <br><input type="submit" value="Login">
+    </h2>
+        </form>
       <!-- banner section end -->
     </div>
     <!-- header section end -->
-    <!-- coffee section start -->
-    <div class="coffee_section layout_padding">
-      <div class="container">
-        <div class="row">
-          <h1 class="coffee_taital">OUR Players</h1>
-        </div>
-      </div>
-      <div class="coffee_section_2">
-        <div id="main_slider" class="carousel slide" data-ride="carousel">
-          <div class="carousel-inner">
-            <div class="carousel-item active">
-              <div class="container-fluid">
-                <div class="row">
-                  <div class="col-lg-3 col-md-6">
-                    <div class="coffee_img">
-                      <img src="static/images/p1.png" />
-                    </div>
-                  </div>
-                  <div class="col-lg-3 col-md-6">
-                    <div class="coffee_img">
-                      <img src="static/images/p2.png" />
-                    </div>
-                  </div>
-                  <div class="col-lg-3 col-md-6">
-                    <div class="coffee_img">
-                      <img src="static/images/p3.png" />
-                    </div>
-                  </div>
-                  <div class="col-lg-3 col-md-6">
-                    <div class="coffee_img">
-                      <img src="static/images/p4.png" />
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="carousel-item">
-              <div class="container-fluid">
-                <div class="row">
-                  <div class="col-lg-3 col-md-6">
-                    <div class="coffee_img">
-                      <img src="static/images/p5.png" />
-                    </div>
-                  </div>
-                  <div class="col-lg-3 col-md-6">
-                    <div class="coffee_img">
-                      <img src="static/images/p6.png" />
-                    </div>
-                  </div>
-                  <div class="col-lg-3 col-md-6">
-                    <div class="coffee_img">
-                      <img src="static/images/p7.png" />
-                    </div>
-                  </div>
-                  <div class="col-lg-3 col-md-6">
-                    <div class="coffee_img">
-                      <img src="static/images/p8.png" />
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="carousel-item">
-              <div class="container-fluid">
-                <div class="row">
-                  <div class="col-lg-3 col-md-6">
-                    <div class="coffee_img">
-                      <img src="static/images/p9.png" />
-                    </div>
-                  </div>
-                  <div class="col-lg-3 col-md-6">
-                    <div class="coffee_img">
-                      <img src="static/images/p10.png" />
-                    </div>
-                  </div>
-                  <div class="col-lg-3 col-md-6">
-                    <div class="coffee_img">
-                      <img src="static/images/p11.png" />
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <a
-            class="carousel-control-prev"
-            href="#main_slider"
-            role="button"
-            data-slide="prev"
-          >
-            <i class="fa fa-arrow-left"></i>
-          </a>
-          <a
-            class="carousel-control-next"
-            href="#main_slider"
-            role="button"
-            data-slide="next"
-          >
-            <i class="fa fa-arrow-right"></i>
-          </a>
-        </div>
-      </div>
-    </div>
     <div class="footer_section layout_padding">
       <div class="container">
         <div class="row">
