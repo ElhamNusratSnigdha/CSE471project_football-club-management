@@ -17,23 +17,23 @@
     <link
       rel="stylesheet"
       type="text/css"
-      href="static/css/bootstrap.min.css"
+      href="/static/css/bootstrap.min.css"
     />
     <!-- style css -->
-    <link rel="stylesheet" type="text/css" href="static/css/style.css" />
+    <link rel="stylesheet" type="text/css" href="/static/css/style.css" />
     <!-- Responsive-->
-    <link rel="stylesheet" href="static/css/responsive.css" />
+    <link rel="stylesheet" href="/static/css/responsive.css" />
     <!-- fevicon -->
-    <link rel="icon" href="static/images/fevicon.png" type="image/gif" />
+    <link rel="icon" href="/static/images/fevicon.png" type="image/gif" />
     <!-- font css -->
     <link
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap"
       rel="stylesheet"
     />
     <!-- Scrollbar Custom CSS -->
-    <link rel="stylesheet" href="static/css/jquery.mCustomScrollbar.min.css" />
+    <link rel="stylesheet" href="/static/css/jquery.mCustomScrollbar.min.css" />
     <!-- Tweaks for older IEs-->
-    <link rel="stylesheet" href="/static/css/font-awesome.css" />
+    <link rel="stylesheet" href="//static/css/font-awesome.css" />
     <style>
       form {
         text-align: center;
@@ -45,7 +45,7 @@
       <div class="container-fluid zero-space">
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
           <a class="navbar-brand" href="index.html"
-            ><img src="static/images/logo.png"
+            ><img src="/static/images/logo.png"
           /></a>
           <button
             class="navbar-toggler"
@@ -101,11 +101,9 @@
     </div>
     <!-- header section end -->
     <div>
-      {% for news in all_news %}
-      <a href="/news/{{news.id}}"><div>{{ news.title }}</div></a>
-      <!-- <div>{{ news.article[:10] }}...</div> -->
+      <div>{{ news.title }}</div>
+      <div>{{ news.article}}...</div>
       <div>{{ news.created_at.date() }}</div>
-      {% endfor %}
     </div>
     <div class="footer_section layout_padding">
       <div class="container">
@@ -138,7 +136,7 @@
                 name="Your Email"
               ></textarea>
               <div class="subscribe_bt">
-                <a href="#"><img src="static/images/teligram-icon.png" /></a>
+                <a href="#"><img src="/static/images/teligram-icon.png" /></a>
               </div>
             </div>
           </div>
@@ -184,13 +182,13 @@
     </div>
     <!-- copyright section end -->
     <!-- Javascript files-->
-    <script src="static/js/jquery.min.js"></script>
-    <script src="static/js/popper.min.js"></script>
-    <script src="static/js/bootstrap.bundle.min.js"></script>
-    <script src="static/js/jquery-3.0.0.min.js"></script>
-    <script src="static/js/plugin.js"></script>
+    <script src="/static/js/jquery.min.js"></script>
+    <script src="/static/js/popper.min.js"></script>
+    <script src="/static/js/bootstrap.bundle.min.js"></script>
+    <script src="/static/js/jquery-3.0.0.min.js"></script>
+    <script src="/static/js/plugin.js"></script>
     <!-- sidebar -->
-    <script src="static/js/jquery.mCustomScrollbar.concat.min.js"></script>
-    <script src="static/js/custom.js"></script>
+    <script src="/static/js/jquery.mCustomScrollbar.concat.min.js"></script>
+    <script src="/static/js/custom.js"></script>
   </body>
 </html>

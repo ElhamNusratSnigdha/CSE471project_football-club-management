@@ -1,0 +1,14 @@
+<div>
+  {% for news in all_news %}
+  <div>{{ news.title }}</div>
+  <div>{{ news.article }}</div>
+  <div>{{ news.created_at.date() }}</div>
+  <a href="/admin/news/delete/{{news.id}}">Delete</a>
+  <a href="/admin/news/update/{{news.id}}">Update</a>
+  {% endfor %}
+  <form action="/admin/news" method="post">
+    <input type="text" name="title" id="title" placeholder="title" />
+    <input type="text" name="article" id="article" placeholder="article" />
+    <input type="submit" value="Add news" />
+  </form>
+</div>

@@ -1,0 +1,20 @@
+<div>
+  <h1>Update News</h1>
+  <form action="/admin/news/update/{{news.id}}" method="post">
+    <input
+      type="text"
+      name="title"
+      id="title"
+      placeholder="title"
+      value="{{news.title}}"
+    />
+    <input
+      type="text"
+      name="article"
+      id="article"
+      placeholder="article"
+      value="{{news.article}}"
+    />
+    <input type="submit" value="Update news" />
+  </form>
+</div>
