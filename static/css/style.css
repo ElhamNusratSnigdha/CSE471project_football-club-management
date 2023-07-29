@@ -273,6 +273,7 @@ button {
 
 .navbar {
   padding: 15px 50px;
+  z-index: 1000;
 }
 
 .user_icon {

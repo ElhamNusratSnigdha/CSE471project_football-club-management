@@ -1,0 +1,42 @@
+{% extends 'base-admin.html' %} {% block body %}
+<div>
+  <form action="/admin/players" method="post">
+    <h2>Name</h2>
+    <input type="text" name="name" id="name" placeholder="name" />
+    <h2>Age</h2>
+    <input type="text" name="age" id="age" placeholder="age" />
+    <h2>Height</h2>
+    <input type="text" name="height" id="height" placeholder="height" />
+    <h2>Weight</h2>
+    <input type="text" name="weight" id="weight" placeholder="weight" />
+    <h2>Nationality</h2>
+    <input
+      type="text"
+      name="nationality"
+      id="nationality"
+      placeholder="nationality"
+    />
+    <h2>Jersey No</h2>
+    <input
+      type="text"
+      name="jersey_no"
+      id="jersey_no"
+      placeholder="jersey_no"
+    />
+    <h2>Position</h2>
+    <input type="text" name="position" id="position" placeholder="position" />
+    <h2>Quote</h2>
+    <input type="text" name="quote" id="quote" placeholder="quote" />
+    <br />
+    <input type="submit" value="Add player" />
+  </form>
+  {% for player in all_players %}
+  <div>{{ player.name }}</div>
+  <div>{{ player.age }}</div>
+  <div>{{ player.created_at.date() }}</div>
+  <a href="/admin/players/delete/{{player.id}}">Delete</a>
+  <a href="/admin/players/update/{{player.id}}">Update</a>
+  {% endfor %}
+</div>
+
+{% endblock %}

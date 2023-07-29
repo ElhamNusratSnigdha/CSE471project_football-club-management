@@ -1,14 +1,23 @@
+{% extends 'base-admin.html' %}
+
 <div>
-  {% for news in all_news %}
-  <div>{{ news.title }}</div>
-  <div>{{ news.article }}</div>
-  <div>{{ news.created_at.date() }}</div>
-  <a href="/admin/news/delete/{{news.id}}">Delete</a>
-  <a href="/admin/news/update/{{news.id}}">Update</a>
-  {% endfor %}
+  {% block body %}
   <form action="/admin/news" method="post">
+    <h2>Title</h2>
     <input type="text" name="title" id="title" placeholder="title" />
+    <h2>Article</h2>
     <input type="text" name="article" id="article" placeholder="article" />
+    <br />
     <input type="submit" value="Add news" />
   </form>
+  <div class="flex">
+    {% for news in all_news %}
+    <div>{{ news.title }}</div>
+    <div>{{ news.article }}</div>
+    <div>{{ news.created_at.date() }}</div>
+    <a href="/admin/news/delete/{{news.id}}">Delete</a>
+    <a href="/admin/news/update/{{news.id}}">Update</a>
+    {% endfor %}
+  </div>
+  {% endblock %}
 </div>

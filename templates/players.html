@@ -1,0 +1,10 @@
+{% extends 'base.html' %} {% block body %}
+<div>
+  {% for player in all_players %}
+  <a href="/players/{{player.id}}"><div>{{ player.name }}</div></a>
+  <div>{{ player.age }}</div>
+
+  {% endfor %}
+</div>
+
+{% endblock %}

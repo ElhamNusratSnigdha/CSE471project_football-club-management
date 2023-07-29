@@ -1,6 +1,8 @@
+{% extends 'base-admin.html' %} {% block body %}
 <div>
   <h1>Update News</h1>
   <form action="/admin/news/update/{{news.id}}" method="post">
+    <h2>Title</h2>
     <input
       type="text"
       name="title"
@@ -8,6 +10,7 @@
       placeholder="title"
       value="{{news.title}}"
     />
+    <h2>Article</h2>
     <input
       type="text"
       name="article"
@@ -15,6 +18,8 @@
       placeholder="article"
       value="{{news.article}}"
     />
+    <br />
     <input type="submit" value="Update news" />
   </form>
 </div>
+{% endblock %}

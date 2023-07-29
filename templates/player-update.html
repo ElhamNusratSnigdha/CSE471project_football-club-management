@@ -1,0 +1,66 @@
+{% extends 'base-admin.html' %} {% block body %}
+
+<div>
+  <h1>Update Player</h1>
+  <form action="/admin/players/update/{{player.id}}" method="post">
+    <input
+      type="text"
+      name="name"
+      id="name"
+      placeholder="name"
+      value="{{player.name}}"
+    />
+    <input
+      type="text"
+      name="age"
+      id="age"
+      placeholder="age"
+      value="{{player.age}}"
+    />
+    <input
+      type="text"
+      name="height"
+      id="height"
+      placeholder="height"
+      value="{{player.height}}"
+    />
+    <input
+      type="text"
+      name="weight"
+      id="weight"
+      placeholder="weight"
+      value="{{player.weight}}"
+    />
+    <input
+      type="text"
+      name="nationality"
+      id="nationality"
+      placeholder="nationality"
+      value="{{player.nationality}}"
+    />
+    <input
+      type="text"
+      name="jersey_no"
+      id="jersey_no"
+      placeholder="jersey_no"
+      value="{{player.jersey_no}}"
+    />
+    <input
+      type="text"
+      name="position"
+      id="position"
+      placeholder="position"
+      value="{{player.position}}"
+    />
+    <input
+      type="text"
+      name="quote"
+      id="quote"
+      placeholder="quote"
+      value="{{player.quote}}"
+    />
+    <input type="submit" value="Update player" />
+  </form>
+</div>
+
+{% endblock %}
