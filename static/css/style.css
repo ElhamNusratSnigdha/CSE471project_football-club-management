@@ -1026,3 +1026,31 @@ textarea#comment.update_mail::placeholder {
 .margin_top90 {
   margin-top: 90px;
 }
+
+.card-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 768px;
+  height: auto;
+  width: 100%;
+  margin: 0px auto;
+  padding: 16px;
+}
+
+.card {
+  border-radius: 20px;
+  width: 200px;
+  min-height: 200px;
+  padding: 16px;
+}
+.card-max {
+  border-radius: 20px;
+  width: 100%;
+  min-height: 200px;
+  padding: 16px;
+}
+
+.title-text {
+  text-align: center;
+}

@@ -1,7 +1,14 @@
 {% extends 'base.html' %} {% block body %}
-<div>
-  <div>{{ player.name }}</div>
-  <div>{{ player.age }}</div>
+
+<div class="card-container">
+  <div class="card">
+    <div>{{ player.name }}</div>
+    <div>Age: {{ player.age }}</div>
+    <div>Height: {{ player.height }}</div>
+    <div>Weight: {{ player.weight }}</div>
+    <div>Position: {{ player.position }}</div>
+    <div>Nationality: {{ player.nationality }}</div>
+  </div>
 </div>
 
 {% endblock %}

@@ -1,8 +1,9 @@
 {% extends 'base.html' %} {% block body %}
-<div>
-  <div>{{ news.title }}</div>
-  <div>{{ news.article}}...</div>
-  <div>{{ news.created_at.date() }}</div>
+<div class="card-container">
+  <div class="card-max">
+    <h1 class="title-text">{{ news.title }}</h1>
+    <div>{{ news.created_at.date() }}</div>
+    <h3>{{ news.article}}</h3>
+  </div>
 </div>
-
 {% endblock %}

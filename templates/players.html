@@ -1,9 +1,11 @@
 {% extends 'base.html' %} {% block body %}
-<div>
+<div class="card-container">
   {% for player in all_players %}
-  <a href="/players/{{player.id}}"><div>{{ player.name }}</div></a>
-  <div>{{ player.age }}</div>
-
+  <div class="card">
+    <div><a href="/players/{{player.id}}">{{ player.name }}</a></div>
+    <div>Age: {{ player.age }}</div>
+    <div>Position: {{ player.position }}</div>
+  </div>
   {% endfor %}
 </div>
 

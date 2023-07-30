@@ -1,9 +1,11 @@
 {% extends 'base.html' %} {% block body %}
-<div>
+<div class="card-container">
   {% for news in all_news %}
-  <a href="/news/{{news.id}}"><div>{{ news.title }}</div></a>
-  <!-- <div>{{ news.article[:10] }}...</div> -->
-  <div>{{ news.created_at.date() }}</div>
+  <div class="card">
+    <a href="/news/{{news.id}}"><div>{{ news.title }}</div></a>
+    <!-- <div>{{ news.article[:10] }}...</div> -->
+    <div>{{ news.created_at.date() }}</div>
+  </div>
   {% endfor %}
 </div>
 {% endblock %}
