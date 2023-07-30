@@ -1,5 +1,5 @@
 {% extends 'base.html' %} {% block body %}
-<div class="card-container">
+<div class="card-container-horizontal">
   {% for news in all_news %}
   <div class="card">
     <a href="/news/{{news.id}}"><div>{{ news.title }}</div></a>
