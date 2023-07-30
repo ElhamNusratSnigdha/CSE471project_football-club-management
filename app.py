@@ -57,12 +57,12 @@ def login():
     name1=request.form['username']
     pwd=request.form['password']
     if name1 not in database:
-	    return render_template('login.html',info='Invalid User')
+      return render_template('login.html',info='Invalid User')
     else:
-        if database[name1]!=pwd:
-            return render_template('login.html',info='Invalid Password')
-        else:
-                return render_template('index.html',name=name1)
+      if database[name1]!=pwd:
+        return render_template('login.html',info='Invalid Password')
+      else:
+        return render_template('index.html',name=name1)
 
 @app.route('/matches')
 def matches():
