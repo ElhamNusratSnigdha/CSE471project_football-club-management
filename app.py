@@ -2,6 +2,9 @@ from flask import Flask, render_template, request, redirect
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 import pickle
+from bs4 import BeautifulSoup
+import requests
+import re
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///test.db'
@@ -54,15 +57,15 @@ database={'nachi':'123','james':'aac','karthik':'asdsf'}
 
 @app.route('/form_login',methods=['POST','GET'])
 def login():
-    name1=request.form['username']
-    pwd=request.form['password']
-    if name1 not in database:
-	    return render_template('login.html',info='Invalid User')
+  name1=request.form['username']
+  pwd=request.form['password']
+  if name1 not in database:
+    return render_template('login.html',info='Invalid User')
+  else:
+    if database[name1]!=pwd:
+      return render_template('login.html',info='Invalid Password')
     else:
-        if database[name1]!=pwd:
-            return render_template('login.html',info='Invalid Password')
-        else:
-                return render_template('index.html',name=name1)
+      return render_template('index.html',name=name1)
 
 @app.route('/matches')
 def matches():
@@ -84,6 +87,30 @@ def newsAdd():
     else: 
       all_news = News.query.order_by(News.created_at).all()
       return render_template("news-add.html", all_news = all_news)
+
+@app.route('/admin/news/scrape',methods=['GET'])
+def newsScrape():
+    html_text = requests.get('https://onefootball.com/en/team/barcelona-5').text
+    soup = BeautifulSoup(html_text, 'lxml')
+    titles = soup.find_all('p', class_=re.compile(("^NewsTeaserV2_teaser__title")))
+    teasers = soup.find_all('p', class_=re.compile(("^NewsTeaserV2_teaser__preview")))
+    aS = soup.find_all('a', class_=re.compile(("^NewsTeaserV2_teaser__content")))
+    for title, url in zip(titles, aS): 
+        titleText = title.text
+        news_html = requests.get('https://onefootball.com' + url['href']).text
+        news_soup = BeautifulSoup(news_html, 'lxml')
+        article_paragraphs = news_soup.find_all('div', class_=re.compile(("^ArticleParagraph")))
+        articleText = ''
+        for article in article_paragraphs:
+            if article.p:
+                articleText += article.p.text
+        new_news = News(title=titleText, article=articleText)
+        try:
+          db.session.add(new_news)
+          db.session.commit()
+        except: 
+          return 'An error occurred'
+    return redirect('/admin/news')
 
 @app.route('/admin/news/delete/<int:id>')
 def newsDelete(id):
