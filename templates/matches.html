@@ -1,3 +1,12 @@
 {% extends 'base.html' %} {% block body %}
-<div class="card-container">matches</div>
+<div class="card-container-horizontal">
+  {% for match in all_matches %}
+  <div class="card-match">
+    <a href="/matches/{{match.id}}"
+      ><div>{{ match.team1 }} vs {{ match.team2 }}</div></a
+    >
+    <div>{{match.stadium}}</div>
+  </div>
+  {% endfor %}
+</div>
 {% endblock %}

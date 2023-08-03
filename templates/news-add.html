@@ -11,6 +11,7 @@
     <input type="submit" value="Add news" />
   </form>
   <a href="/admin/news/scrape">Scrape News From OneFootball.com</a>
+  <a href="/admin/news/deleteall"><button>Delete all news</button></a>
   <div class="flex">
     {% for news in all_news %}
     <div>{{ news.title }}</div>

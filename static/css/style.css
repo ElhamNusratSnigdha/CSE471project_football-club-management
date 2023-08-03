@@ -1060,6 +1060,24 @@ textarea#comment.update_mail::placeholder {
   padding: 16px;
 }
 
+.card-match {
+  width: 100%;
+  border-radius: 20px;
+  padding: 16px;
+  margin: 16px;
+  text-align: center;
+  border: 2px dashed black;
+}
+
+.card-news {
+  width: 100%;
+
+  padding: 16px;
+  margin: 16px;
+  text-align: center;
+  font-weight: bold;
+}
+
 .title-text {
   text-align: center;
 }
