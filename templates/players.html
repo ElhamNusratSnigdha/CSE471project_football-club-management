@@ -1,5 +1,5 @@
 {% extends 'base.html' %} {% block body %}
-<div class="card-container-horizontal">
+<div class="card-container-horizontal-players">
   {% for player in all_players %}
   <div class="card-player">
     <div><a href="/players/{{player.id}}">{{ player.name }}</a></div>
