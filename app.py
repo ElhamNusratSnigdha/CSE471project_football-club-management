@@ -17,30 +17,21 @@ app.app_context().push()
 def index():
     return render_template('index.html')
 
-# @app.route('/register',methods=['Get','POST'])
-# def register():
-#     if request.method == 'POST':
-#         #handle request
-#     return render_template('register.html')
+@app.route('/register',methods=['Get','POST'])
+def register():
+    if request.method == 'POST':
+        #handle request
+        pass
     
-@app.route('/login')
-def hello_world():
-    return render_template("login.html")
-database = {'nachi': '123', 'james': 'aac', 'karthik': 'asdsf'}
+    return render_template('register.html')
 
-@app.route('/form_login', methods=['POST', 'GET'])
+@app.route('/login',methods=['Get','POST'])
 def login():
-    name1 = request.form['username']
-    pwd = request.form['password']
-    if name1 not in database:
-        return render_template('login.html', info='Invalid User')
-    else:
-        if database[name1] != pwd:
-            return render_template('login.html', info='Invalid Password')
-        else:
-            return render_template('index.html', name=name1)
-
-
+    if request.method == 'POST':
+        #handle request
+        pass
+    
+    return render_template('login.html')
 
 @app.route('/matches')
 def allMatches():
