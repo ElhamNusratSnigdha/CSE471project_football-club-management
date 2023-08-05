@@ -1045,6 +1045,14 @@ textarea#comment.update_mail::placeholder {
   margin: 40px auto;
   padding: 16px;
 }
+.card-container-horizontal-players {
+  display: flex;
+  flex-wrap: wrap;
+  height: auto;
+  width: 100%;
+  margin: 40px auto;
+  padding: 40px;
+}
 
 .card {
   border-radius: 20px;
