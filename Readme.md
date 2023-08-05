@@ -8,3 +8,5 @@
 2. pip install requests beautifulsoup4 lxml
 3. python app.py
    or, py.exe -3 app.py
+
+Here, we used Beautiful Soup, a Python package for parsing HTML and XML documents. It creates a parse tree for parsed pages that can be used to extract data from HTML, which is useful for web scraping.
