@@ -1042,7 +1042,7 @@ textarea#comment.update_mail::placeholder {
   max-width: 768px;
   height: auto;
   width: 100%;
-  margin: 0px auto;
+  margin: 40px auto;
   padding: 16px;
 }
 
@@ -1052,6 +1052,15 @@ textarea#comment.update_mail::placeholder {
   min-height: 200px;
   padding: 16px;
   margin: 16px;
+}
+.card-player {
+  border-radius: 20px;
+  width: 200px;
+  min-height: 200px;
+  padding: 16px;
+  margin: 16px;
+  text-align: center;
+  margin: 20px auto;
 }
 .card-max {
   border-radius: 20px;
