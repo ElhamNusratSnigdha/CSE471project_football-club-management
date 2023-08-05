@@ -6,63 +6,27 @@ from bs4 import BeautifulSoup
 import requests
 import re
 
+
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///test.db'
 db = SQLAlchemy(app)
 
 app.app_context().push()
 
-
-class News(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    title = db.Column(db.String(200), nullable=False)
-    article = db.Column(db.String(1000), nullable=True)
-    created_at = db.Column(db.DateTime, default=datetime.utcnow)
-
-    def __repr__(self):
-        return '<News %r>' % self.id
-
-
-class Player(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(200), nullable=False)
-    age = db.Column(db.String(200), nullable=True)
-    weight = db.Column(db.String(200), nullable=True)
-    height = db.Column(db.String(200), nullable=True)
-    nationality = db.Column(db.String(200), nullable=True)
-    jersey_no = db.Column(db.String(200), nullable=True)
-    position = db.Column(db.String(200), nullable=True)
-    quote = db.Column(db.String(200), nullable=True)
-    created_at = db.Column(db.DateTime, default=datetime.utcnow)
-
-    def __repr__(self):
-        return '<Player %r>' % self.id
-
-
-class Matches(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    team1 = db.Column(db.String(200), nullable=True)
-    team2 = db.Column(db.String(200), nullable=True)
-    stadium = db.Column(db.String(200), nullable=True)
-    time = db.Column(db.String(200), nullable=True)
-    created_at = db.Column(db.DateTime, default=datetime.utcnow)
-
-    def __repr__(self):
-        return '<Matches %r>' % self.id
-
-
 @app.route('/')
 def index():
     return render_template('index.html')
 
-
+# @app.route('/register',methods=['Get','POST'])
+# def register():
+#     if request.method == 'POST':
+#         #handle request
+#     return render_template('register.html')
+    
 @app.route('/login')
 def hello_world():
     return render_template("login.html")
-
-
 database = {'nachi': '123', 'james': 'aac', 'karthik': 'asdsf'}
-
 
 @app.route('/form_login', methods=['POST', 'GET'])
 def login():
@@ -75,6 +39,7 @@ def login():
             return render_template('login.html', info='Invalid Password')
         else:
             return render_template('index.html', name=name1)
+
 
 
 @app.route('/matches')
@@ -344,6 +309,44 @@ def playerOne(id):
 @app.route('/team')
 def team():
     return render_template("team.html")
+
+
+class News(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    title = db.Column(db.String(200), nullable=False)
+    article = db.Column(db.String(1000), nullable=True)
+    created_at = db.Column(db.DateTime, default=datetime.utcnow)
+
+    def __repr__(self):
+        return '<News %r>' % self.id
+
+
+class Player(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(200), nullable=False)
+    age = db.Column(db.String(200), nullable=True)
+    weight = db.Column(db.String(200), nullable=True)
+    height = db.Column(db.String(200), nullable=True)
+    nationality = db.Column(db.String(200), nullable=True)
+    jersey_no = db.Column(db.String(200), nullable=True)
+    position = db.Column(db.String(200), nullable=True)
+    quote = db.Column(db.String(200), nullable=True)
+    created_at = db.Column(db.DateTime, default=datetime.utcnow)
+
+    def __repr__(self):
+        return '<Player %r>' % self.id
+
+
+class Matches(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    team1 = db.Column(db.String(200), nullable=True)
+    team2 = db.Column(db.String(200), nullable=True)
+    stadium = db.Column(db.String(200), nullable=True)
+    time = db.Column(db.String(200), nullable=True)
+    created_at = db.Column(db.DateTime, default=datetime.utcnow)
+
+    def __repr__(self):
+        return '<Matches %r>' % self.id
 
 
 if __name__ == "__main__":
