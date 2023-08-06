@@ -17,6 +17,8 @@
 
 ![8](https://github.com/ElhamNusratSnigdha/football-club-management/assets/60064694/64237884-6fcb-4694-b620-4ceec75a4234)
 
+Run in the terminal:
+
 ```
 pip3 install flask flask-sqlalchemy
 pip install requests beautifulsoup4 lxml
@@ -26,4 +28,11 @@ python app.py
 ```
 
 >Here, we used **Beautiful Soup**, a Python package for parsing HTML and XML documents. It creates a parse tree for parsed pages that can be used to extract data from HTML, which is useful for web scraping.
+
 >**bcrypt** is a password-hashing function that turns a simple password into fixed-length characters called a hash. Before hashing a password, bcrypt applies a salt — a unique random string that makes the hash unpredictable.
+
+Contributors:
+
+- [Elham Nusrat](https://github.com/ElhamNusratSnigdha)
+- [Rubayt Anam](https://github.com/RubaytAnam)
+- [Md Tariqul Islam Shoaib](https://github.com/Md-Tariqul-Islam-Shoaib)
