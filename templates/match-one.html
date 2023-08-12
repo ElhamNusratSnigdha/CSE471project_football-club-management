@@ -5,7 +5,7 @@
     <div>{{ match.created_at.date() }}</div>
     <h3>{{ match.stadium}}</h3>
     <h3>{{ match.time}}</h3>
-    {{ share.create(title='Share with: ') }}
+    {{ share.create(title='Share with: ', sites='facebook,twitter') }}
   </div>
 </div>
 {% endblock %}
