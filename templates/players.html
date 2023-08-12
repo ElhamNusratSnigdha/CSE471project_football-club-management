@@ -1,6 +1,6 @@
 {% extends 'base.html' %} {% block body %}
 
-<table>
+<!-- <table>
   <tr>
     <th style="width: 30%">Name</th>
     <th style="width: 10%">Age</th>
@@ -13,9 +13,9 @@
     <td>{{ player.position }}</td>
   </tr>
   {% endfor %}
-</table>
+</table> -->
 
-<!-- <div class="card-container-horizontal-players">
+<div class="card-container-horizontal-players">
   {% for player in all_players %}
   <div class="card-player">
     <div><a href="/players/{{player.id}}">{{ player.name }}</a></div>
@@ -23,6 +23,6 @@
     <div>Position: {{ player.position }}</div>
   </div>
   {% endfor %}
-</div> -->
+</div>
 
 {% endblock %}

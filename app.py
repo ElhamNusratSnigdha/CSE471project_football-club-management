@@ -6,9 +6,12 @@ import pickle
 from bs4 import BeautifulSoup
 import requests
 import re
+from flask_share import Share
 
+share = Share()
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///test.db'
+share.init_app(app)
 db = SQLAlchemy(app)
 
 app.secret_key = 'secret_key'
