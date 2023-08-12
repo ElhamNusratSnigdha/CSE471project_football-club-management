@@ -12,14 +12,23 @@
   </form>
   <a href="/admin/news/scrape">Scrape News From OneFootball.com</a>
   <a href="/admin/news/deleteall"><button>Delete all news</button></a>
-  <div class="flex">
+  <table>
+    <tr>
+      <th style="width: 20%">Title</th>
+      <th style="width: 40%">Article</th>
+      <th>Created At</th>
+      <th>Update</th>
+      <th>Delete</th>
+    </tr>
     {% for news in all_news %}
-    <div>{{ news.title }}</div>
-    <div>{{ news.article }}</div>
-    <div>{{ news.created_at.date() }}</div>
-    <a href="/admin/news/delete/{{news.id}}">Delete</a>
-    <a href="/admin/news/update/{{news.id}}">Update</a>
+    <tr>
+      <td>{{ news.title }}</td>
+      <td>{{ news.article }}</td>
+      <td>{{ news.created_at.date() }}</td>
+      <td><a href="/admin/news/update/{{news.id}}">Update</a></td>
+      <td><a href="/admin/news/delete/{{news.id}}">Delete</a></td>
+    </tr>
     {% endfor %}
-  </div>
+  </table>
   {% endblock %}
 </div>

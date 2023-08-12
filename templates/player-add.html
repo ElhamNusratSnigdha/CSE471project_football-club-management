@@ -30,13 +30,24 @@
     <br />
     <input type="submit" value="Add player" />
   </form>
-  {% for player in all_players %}
-  <div>{{ player.name }}</div>
-  <div>{{ player.age }}</div>
-  <div>{{ player.created_at.date() }}</div>
-  <a href="/admin/players/delete/{{player.id}}">Delete</a>
-  <a href="/admin/players/update/{{player.id}}">Update</a>
-  {% endfor %}
+  <table>
+    <tr>
+      <th style="width: 30%">Name</th>
+      <th style="width: 10%">Age</th>
+      <th>Created At</th>
+      <th>Update</th>
+      <th>Delete</th>
+    </tr>
+    {% for player in all_players %}
+    <tr>
+      <td>{{ player.name }}</td>
+      <td>{{ player.age }}</td>
+      <td>{{ player.created_at.date() }}</td>
+      <td><a href="/admin/players/update/{{player.id}}">Update</a></td>
+      <td><a href="/admin/players/delete/{{player.id}}">Delete</a></td>
+    </tr>
+    {% endfor %}
+  </table>
 </div>
 
 {% endblock %}

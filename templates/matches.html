@@ -1,5 +1,23 @@
 {% extends 'base.html' %} {% block body %}
-<div class="card-container-horizontal">
+
+<table>
+  <tr>
+    <th style="width: 20%">Home Team</th>
+    <th style="width: 20%">Away Team</th>
+
+    <th>Stadium</th>
+  </tr>
+  {% for match in all_matches %}
+  <tr>
+    <td><a href="/matches/{{match.id}}">{{ match.team1 }}</a></td>
+    <td><a href="/matches/{{match.id}}">{{ match.team2 }}</a></td>
+
+    <td>{{ match.stadium }}</td>
+  </tr>
+  {% endfor %}
+</table>
+
+<!-- <div class="card-container-horizontal">
   {% for match in all_matches %}
   <div class="card-match">
     <a href="/matches/{{match.id}}"
@@ -8,5 +26,5 @@
     <div>{{match.stadium}}</div>
   </div>
   {% endfor %}
-</div>
+</div> -->
 {% endblock %}
