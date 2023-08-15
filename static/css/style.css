@@ -1098,3 +1098,15 @@ textarea#comment.update_mail::placeholder {
 .title-text {
   text-align: center;
 }
+
+td,
+th {
+  text-align: center;
+  border: 1px solid black;
+}
+
+table {
+  border: 1px solid black;
+  width: 90%;
+  margin: 20px auto;
+}

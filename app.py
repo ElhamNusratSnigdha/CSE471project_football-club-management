@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, session
+from flask import Flask, render_template, request, redirect, session, send_file, url_for
 from flask_sqlalchemy import SQLAlchemy
 import bcrypt
 from datetime import datetime
@@ -6,23 +6,41 @@ import pickle
 from bs4 import BeautifulSoup
 import requests
 import re
+from flask_share import Share
+from werkzeug.utils import secure_filename
+import os
 
+UPLOAD_FOLDER = './static/uploads/'
+ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'gif'}
+
+
+share = Share()
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///test.db'
+app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+share.init_app(app)
 db = SQLAlchemy(app)
 
 app.secret_key = 'secret_key'
 app.app_context().push()
 
+
 @app.route('/')
 def index():
     return render_template('index.html')
+
+
+def allowed_file(filename):
+    return '.' in filename and \
+           filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
+
 
 @app.route('/about_us')
 def about_us():
     return render_template('about_us.html')
 
-@app.route('/register',methods=['Get','POST'])
+
+@app.route('/register', methods=['Get', 'POST'])
 def register():
     if request.method == 'POST':
         # handle request
@@ -30,13 +48,14 @@ def register():
         email = request.form['email']
         password = request.form['password']
 
-        new_user = User(name=name,email=email,password=password)
+        new_user = User(name=name, email=email, password=password)
         db.session.add(new_user)
         db.session.commit()
         return redirect('/login')
     return render_template('register.html')
 
-@app.route('/login',methods=['Get','POST'])
+
+@app.route('/login', methods=['Get', 'POST'])
 def login():
     if request.method == 'POST':
         email = request.form['email']
@@ -46,21 +65,24 @@ def login():
             session['email'] = user.email
             return redirect('/dashboard')
         else:
-            return render_template('login.html',error='Invalid user')
+            return render_template('login.html', error='Invalid user')
     return render_template('login.html')
+
 
 @app.route('/dashboard')
 def dashboard():
     if session['email']:
         user = User.query.filter_by(email=session['email']).first()
-        return render_template('dashboard.html',user=user)
-    
+        return render_template('dashboard.html', user=user)
+
     return redirect('/login')
+
 
 @app.route('/logout')
 def logout():
-    session.pop('email',None)
+    session.pop('email', None)
     return redirect('/login')
+
 
 @app.route('/matches')
 def allMatches():
@@ -262,13 +284,19 @@ def playersAdd():
         name = request.form['name']
         age = request.form['age']
         height = request.form['height']
+        image = request.files['image']
         weight = request.form['weight']
         nationality = request.form['nationality']
         jersey_no = request.form['jersey_no']
         position = request.form['position']
         quote = request.form['quote']
+        file_url = ''
+        if image and allowed_file(image.filename):
+            filename = secure_filename(image.filename)
+            image.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+            file_url = filename
         new_player = Player(name=name, age=age, height=height, weight=weight,
-                            jersey_no=jersey_no, position=position, quote=quote)
+                            jersey_no=jersey_no, position=position, quote=quote, imageFile=file_url)
 
         try:
             db.session.add(new_player)
@@ -294,6 +322,11 @@ def playerUpdate(id):
         player_to_update.jersey_no = request.form['jersey_no']
         player_to_update.position = request.form['position']
         player_to_update.quote = request.form['quote']
+        image = request.files['image']
+        if image and allowed_file(image.filename):
+            filename = secure_filename(image.filename)
+            image.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+            player_to_update.imageFile = filename
         try:
             db.session.commit()
             return redirect('/admin/players')
@@ -347,6 +380,7 @@ class Player(db.Model):
     age = db.Column(db.String(200), nullable=True)
     weight = db.Column(db.String(200), nullable=True)
     height = db.Column(db.String(200), nullable=True)
+    imageFile = db.Column(db.String(200), nullable=True)
     nationality = db.Column(db.String(200), nullable=True)
     jersey_no = db.Column(db.String(200), nullable=True)
     position = db.Column(db.String(200), nullable=True)
@@ -368,19 +402,22 @@ class Matches(db.Model):
     def __repr__(self):
         return '<Matches %r>' % self.id
 
+
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(100), nullable=False)
     email = db.Column(db.String(100), unique=True)
     password = db.Column(db.String(100))
 
-    def __init__(self,email,password,name):
+    def __init__(self, email, password, name):
         self.name = name
         self.email = email
-        self.password = bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt()).decode('utf-8')
-    
-    def check_password(self,password):
-        return bcrypt.checkpw(password.encode('utf-8'),self.password.encode('utf-8'))
+        self.password = bcrypt.hashpw(password.encode(
+            'utf-8'), bcrypt.gensalt()).decode('utf-8')
+
+    def check_password(self, password):
+        return bcrypt.checkpw(password.encode('utf-8'), self.password.encode('utf-8'))
+
 
 if __name__ == "__main__":
     app.run(debug=True)
