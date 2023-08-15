@@ -23,6 +23,7 @@ Run in the terminal:
 pip3 install flask flask-sqlalchemy
 pip install requests beautifulsoup4 lxml
 pip install bcrypt
+pip install flask-share
 python app.py
    or, py.exe -3 app.py
 ```
