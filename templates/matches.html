@@ -2,7 +2,6 @@
 
 <table>
   <tr>
-<<<<<<< HEAD
     <th style="width: 20%;background-color: yellow;">Home Team</th>
     <th style="width: 20%; background-color: red;">Away Team</th>
     <th style="background-color:yellow;">Date and Time</th>
@@ -14,19 +13,6 @@
     <td style="background-color: red;"><a href="/matches/{{match.id}}">{{ match.team2 }}</a></td>
     <td style="background-color: yellow;">{{ match.time }}</td>
     <td style="background-color: red;">{{ match.stadium }}</td>
-=======
-    <th style="width: 20%">Home Team</th>
-    <th style="width: 20%">Away Team</th>
-    <th>Date and Time</th>
-    <th>Stadium</th>
-  </tr>
-  {% for match in all_matches %}
-  <tr>
-    <td><a href="/matches/{{match.id}}">{{ match.team1 }}</a></td>
-    <td><a href="/matches/{{match.id}}">{{ match.team2 }}</a></td>
-    <td>{{ match.time }}</td>
-    <td>{{ match.stadium }}</td>
->>>>>>> 671ca4e096decb713ab429d27c776caf12bb0ea5
   </tr>
   {% endfor %}
 </table>
