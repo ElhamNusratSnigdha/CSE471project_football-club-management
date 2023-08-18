@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request, redirect, session, send_file, url_for
 from flask_sqlalchemy import SQLAlchemy
+from flask_login import UserMixin, login_user, LoginManager, login_required, logout_user, current_user
 import bcrypt
 from datetime import datetime
 import pickle
@@ -12,17 +13,33 @@ import os
 
 UPLOAD_FOLDER = './static/uploads/'
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'gif'}
+ADMINUSER = 'admin'
+ADMINPASSWORD = 'password12'
 
 
 share = Share()
 app = Flask(__name__)
+
+
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///test.db'
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+
+
 share.init_app(app)
 db = SQLAlchemy(app)
 
+login_manager = LoginManager()
+login_manager.init_app(app)
+login_manager.login_view = '/admin/login'
+
+
 app.secret_key = 'secret_key'
 app.app_context().push()
+
+
+@login_manager.user_loader
+def load_user(user_id):
+    return AdminUser.query.get(int(user_id))
 
 
 @app.route('/')
@@ -55,6 +72,26 @@ def register():
     return render_template('register.html')
 
 
+@app.route('/admin/login', methods=['Get', 'POST'])
+def adminLogin():
+    if request.method == 'POST':
+        username = request.form['username']
+        password = request.form['password']
+        user = AdminUser.query.filter_by(username=username).first()
+        print(user)
+        if user:
+            if password == user.password:
+                login_user(user)
+                next = request.args.get('next')
+                print(next)
+                return redirect(next or url_for('newsAdd'))
+            else:
+                return render_template('admin-login.html', errorMsg='Invalid Admin Credentials')
+        else:
+            return render_template('admin-login.html', errorMsg='Invalid Admin Credentials')
+    return render_template('admin-login.html', errorMsg='')
+
+
 @app.route('/login', methods=['Get', 'POST'])
 def login():
     if request.method == 'POST':
@@ -84,6 +121,13 @@ def logout():
     return redirect('/login')
 
 
+@app.route('/admin/logout', methods=['GET', 'POST'])
+@login_required
+def adminLogout():
+    logout_user()
+    return redirect('/admin/login')
+
+
 @app.route('/matches')
 def allMatches():
     all_matches = Matches.query.order_by(Matches.created_at).all()
@@ -97,6 +141,7 @@ def matchOne(id):
 
 
 @app.route('/admin/matches', methods=['POST', 'GET'])
+@login_required
 def matchesAdd():
     if request.method == "POST":
         team1 = request.form['team1']
@@ -183,6 +228,7 @@ def matchUpdate(id):
 
 
 @app.route('/admin/news', methods=['POST', 'GET'])
+@login_required
 def newsAdd():
     if request.method == "POST":
         news_title = request.form['title']
@@ -279,6 +325,7 @@ def newsOne(id):
 
 
 @app.route('/admin/players', methods=['POST', 'GET'])
+@login_required
 def playersAdd():
     if request.method == "POST":
         name = request.form['name']
@@ -289,14 +336,16 @@ def playersAdd():
         nationality = request.form['nationality']
         jersey_no = request.form['jersey_no']
         position = request.form['position']
-        quote = request.form['quote']
+        match_played = request.form['match_played']
+        goals = request.form['goals']
+        assists = request.form['assists']
         file_url = ''
         if image and allowed_file(image.filename):
             filename = secure_filename(image.filename)
             image.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
             file_url = filename
         new_player = Player(name=name, age=age, height=height, weight=weight,
-                            jersey_no=jersey_no, position=position, quote=quote, imageFile=file_url)
+                            jersey_no=jersey_no, position=position, imageFile=file_url, match_played=match_played, goals=goals, assists=assists)
 
         try:
             db.session.add(new_player)
@@ -321,7 +370,9 @@ def playerUpdate(id):
         player_to_update.nationality = request.form['nationality']
         player_to_update.jersey_no = request.form['jersey_no']
         player_to_update.position = request.form['position']
-        player_to_update.quote = request.form['quote']
+        player_to_update.match_played = request.form['match_played']
+        player_to_update.goals = request.form['goals']
+        player_to_update.assists = request.form['assists']
         image = request.files['image']
         if image and allowed_file(image.filename):
             filename = secure_filename(image.filename)
@@ -384,7 +435,9 @@ class Player(db.Model):
     nationality = db.Column(db.String(200), nullable=True)
     jersey_no = db.Column(db.String(200), nullable=True)
     position = db.Column(db.String(200), nullable=True)
-    quote = db.Column(db.String(200), nullable=True)
+    match_played = db.Column(db.String(200), nullable=True)
+    goals = db.Column(db.String(200), nullable=True)
+    assists = db.Column(db.String(200), nullable=True)
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
 
     def __repr__(self):
@@ -419,6 +472,19 @@ class User(db.Model):
         return bcrypt.checkpw(password.encode('utf-8'), self.password.encode('utf-8'))
 
 
+class AdminUser(db.Model, UserMixin):
+    id = db.Column(db.Integer, primary_key=True)
+    username = db.Column(db.String(20), nullable=False, unique=True)
+    password = db.Column(db.String(80), nullable=False)
+
+
 if __name__ == "__main__":
     app.run(debug=True)
     db.create_all()
+    admin = AdminUser.query.get(1)
+    if admin:
+        pass
+    else:
+        new_user = AdminUser(username=ADMINUSER, password=ADMINPASSWORD)
+        db.session.add(new_user)
+        db.session.commit()

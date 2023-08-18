@@ -1,0 +1,12 @@
+id,name,age,weight,height,imageFile,nationality,jersey_no,position,quote,created_at
+1,Ter Stegen,31,85 kg,187 cm,MarcAndreterStegen.png,NULL,1,Goal keeper,,2023-08-13 08:46:57.560335
+2,Ronald Araujo,24,79,188 cm,ronald_araujo.jpg,NULL,4,Defender,,2023-08-13 08:47:34.801609
+3,Frankie De jong,26,74 kg,181,De_jong.png,NULL,21,Midfielder,,2023-08-13 08:48:18.485390
+4,Ansu Fati,21,66 kg,178 cm,Fati.png,NULL,10,Winger,,2023-08-13 08:48:45.805252
+5,Pedri Gonzalez,21,60,174 cm,Pedri.png,NULL,8,Midfielder,,2023-08-13 08:49:22.265418
+6,Pablo gavi,19,70 kg,173 cm,Gavi.png,NULL,6,Midfielder,,2023-08-13 08:49:51.016244
+7,Ilkay Gundogan ,33,80 kg,180 cm,Gundogan.png,NULL,22,Midfielder,,2023-08-13 08:51:57.529171
+8,Robert Lewandowski,35,81 kg,185 cm,Lewandowski.png,NULL,9,Striker,,2023-08-13 08:52:44.354314
+9,Raphinha Diaz,27,68 kg,176 cm,Raphinha.png,NULL,11,Winger,,2023-08-13 08:53:47.090298
+10,Jules Kounde,25,75 kg,180 cm,Kunde.png,NULL,23,Defender,,2023-08-13 08:55:32.602840
+11,Marcos Alonso,33,84 kg,188 cm,Alonso.jpg,NULL,17,Defender,,2023-08-13 08:57:50.452779

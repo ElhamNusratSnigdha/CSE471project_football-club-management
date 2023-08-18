@@ -6,6 +6,7 @@
     action="/admin/players/update/{{player.id}}"
     method="post"
     enctype="multipart/form-data"
+    class="form-container"
   >
     <h2>Name</h2>
     <input
@@ -65,13 +66,29 @@
       placeholder="position"
       value="{{player.position}}"
     />
-    <h2>quote</h2>
+    <h2>Match Played</h2>
     <input
       type="text"
-      name="quote"
-      id="quote"
-      placeholder="quote"
-      value="{{player.quote}}"
+      name="match_played"
+      id="match_played"
+      placeholder="match_played"
+      value="{{player.match_played}}"
+    />
+    <h2>Goals</h2>
+    <input
+      type="text"
+      name="goals"
+      id="goals"
+      placeholder="goals"
+      value="{{player.goals}}"
+    />
+    <h2>Assists</h2>
+    <input
+      type="text"
+      name="assists"
+      id="assists"
+      placeholder="assists"
+      value="{{player.assists}}"
     />
     <br />
     <input type="submit" value="Update player" />
