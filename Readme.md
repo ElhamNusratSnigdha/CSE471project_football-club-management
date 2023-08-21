@@ -4,19 +4,21 @@
 
 ![1](https://github.com/ElhamNusratSnigdha/football-club-management/assets/60064694/945ad0b0-0c5f-4fda-998b-55b8f0ef2647)
 
-![2](https://github.com/ElhamNusratSnigdha/football-club-management/assets/60064694/317faca2-c50b-47e8-9335-218e97c28ed5)
+![image](https://github.com/ElhamNusratSnigdha/football-club-management/assets/60064694/6cd35eb0-ad14-43d6-bf54-d2eae0839614)
 
-![3](https://github.com/ElhamNusratSnigdha/football-club-management/assets/60064694/c1508c1d-544b-4252-95b1-c4c4ce82fabb)
+![image](https://github.com/ElhamNusratSnigdha/football-club-management/assets/60064694/847da335-aaa9-4fe9-8db1-472f4ae8394e)
 
-![4](https://github.com/ElhamNusratSnigdha/football-club-management/assets/60064694/5235040e-5217-4014-a77f-c375f4b57a6b)
+![image](https://github.com/ElhamNusratSnigdha/football-club-management/assets/60064694/20689a2f-5cf7-44db-a956-3dc27962e6f2)
 
-![5](https://github.com/ElhamNusratSnigdha/football-club-management/assets/60064694/d2d42db6-0905-40a3-911f-9d1c190d5857)
+![image](https://github.com/ElhamNusratSnigdha/football-club-management/assets/60064694/c0b2230f-d3e5-4b79-b960-af28ad09670c)
 
-![6](https://github.com/ElhamNusratSnigdha/football-club-management/assets/60064694/4047a8a0-dbb3-4e39-8712-3623434f1123)
+![image](https://github.com/ElhamNusratSnigdha/football-club-management/assets/60064694/325a5c97-dc1a-466c-b1e4-273e4b1fd89e)
 
-![7](https://github.com/ElhamNusratSnigdha/football-club-management/assets/60064694/24c79c71-f9f3-476e-80b6-aadfe54f65cc)
+![image](https://github.com/ElhamNusratSnigdha/football-club-management/assets/60064694/fd904652-2584-4efd-b037-802811aea848)
 
-![8](https://github.com/ElhamNusratSnigdha/football-club-management/assets/60064694/64237884-6fcb-4694-b620-4ceec75a4234)
+![image](https://github.com/ElhamNusratSnigdha/football-club-management/assets/60064694/9be737e5-eaf5-45ea-8eda-86953398cc33)
+
+![image](https://github.com/ElhamNusratSnigdha/football-club-management/assets/60064694/113e7960-d61c-415d-840a-380db11e2dd2)
 
 Run in the terminal:
 
